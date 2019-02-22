@@ -1,4 +1,4 @@
-import Header from "../comps/header";
+import Header from "../components/header";
 import { NextFC } from "next";
 
 const About: NextFC = () => (
