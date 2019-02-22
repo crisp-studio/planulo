@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "name": "planulo",
+  "routes": [{ "src": "/plan/(?<name>[^/]+)$", "dest": "/plan?name=$name" }],
+  "builds": [{ "src": "next.config.js", "use": "@now/next" }]
+}
