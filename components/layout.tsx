@@ -6,9 +6,7 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
 `;
 
-// ? Welche Props würde ich den children hier geben?
-
-const Layout = ({ children }) => (
+const Layout: React.FC = ({ children }) => (
   <Grommet theme={planulo}>
     <GlobalStyle />
     <main>

@@ -1,10 +1,8 @@
-import { Box } from "grommet";
+import { Box, BoxProps } from "grommet";
 import React from "react";
 
-// ? Aktuell übergebe ich nur background als prop, wie kann ich es ermöglichen alle passenden Props von Box in Container verfügbar zu machen?
-
-const Container = ({ children, background }) => (
-  <Box direction="column" align="center" background={background}>
+const Container: React.FC<BoxProps> = ({ children, ...props }) => (
+  <Box direction="column" align="center" {...props}>
     <Box width="xlarge">{children}</Box>
   </Box>
 );

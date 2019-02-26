@@ -1,10 +1,12 @@
 import { rgba } from "polished";
+import { ThemeProps } from "styled-components";
+import { base } from "grommet/themes";
 
 const brandColor = "#4098D7";
 const accentColors = ["#FFFBEA", "#FCE588", "#F7C948", "#CB6E17"];
 const neutralColors = ["#00873D", "#3D138D", "#00739D", "#A2423D"];
 
-const statusColors = {
+const statusColors: { [k: string]: string } = {
   critical: "#FF4040",
   error: "#FF4040",
   warning: "#FFAA15",
@@ -12,15 +14,6 @@ const statusColors = {
   unknown: "#CCCCCC",
   disabled: "#CCCCCC"
 };
-
-const darkColors = [
-  "#102A43",
-  "#243B53",
-  "#334E68",
-  "#486581",
-  "#627D98",
-  "#829AB1"
-];
 
 const brandColors = [
   "#DCEEFB",
@@ -35,6 +28,15 @@ const brandColors = [
   "#003E6B"
 ];
 
+const darkColors = [
+  "#102A43",
+  "#243B53",
+  "#334E68",
+  "#486581",
+  "#627D98",
+  "#829AB1"
+];
+
 const lightColors = [
   "#F0F4F8",
   "#D9E2EC",
@@ -46,7 +48,11 @@ const lightColors = [
 
 const focusColor = accentColors[0];
 
-const colors = {
+interface Color {
+  [k: string]: string | { dark: string; light: string };
+}
+
+const colors: Color = {
   active: rgba(221, 221, 221, 0.5),
   black: "#000000",
   border: {
@@ -72,8 +78,6 @@ const colors = {
   white: "#FFFFFF"
 };
 
-// ? Wie kann ich das hier besser typen?
-
 const colorArray = (array: Array<string>, prefix: string) =>
   array.forEach((color: string, index: number) => {
     colors[`${prefix}-${index + 1}`] = color;
@@ -92,14 +96,7 @@ const planulo = {
   global: {
     colors,
     font: {
-      family: "'Inter', sans-serif",
-      // ? Sollen wir den Font local ablegen, über NPM oder remote?
-      face: `
-        @font-face {
-          font-family: 'Inter';
-          src: url("https://rsms.me/inter/inter.css");
-        }
-      `
+      family: "'Inter', sans-serif"
     }
   },
   button: {
