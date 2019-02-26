@@ -92,3 +92,5 @@ firebase.config.ts
 .next/
 .cache/
 public/
+
+.notes.md
