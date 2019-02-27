@@ -1,8 +1,8 @@
 import ProjectPicker from "./project-picker";
 import React from "react";
 import ShareButton from "./share-button";
-import { Box, Text } from "grommet";
-import { Container } from "../common";
+import { Box } from "grommet";
+import { Container, Logo } from "../common";
 import { Home } from "react-feather";
 
 const ScheduleEditorHeader = () => (
@@ -13,9 +13,7 @@ const ScheduleEditorHeader = () => (
         <ProjectPicker />
       </Box>
       <Box>
-        <Text color="light-2" size="large" weight="bold">
-          PLANULO
-        </Text>
+        <Logo color="brand-1" />
       </Box>
       <Box alignContent="center">
         <ShareButton />
