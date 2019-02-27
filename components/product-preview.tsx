@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Image } from "grommet";
+import { Image } from "grommet";
 import { Container } from "../components/common";
 
 const ProductPreview = () => (

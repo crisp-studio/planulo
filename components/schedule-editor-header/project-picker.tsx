@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, DropButton, Heading, Button, Text } from "grommet";
+import { Box, DropButton, Text } from "grommet";
 import { ChevronDown } from "react-feather";
 
 const DropContent = () => (
