@@ -1,4 +1,4 @@
-import Header from "../components/header";
+import Header from "../components/common/header";
 import { NextFC } from "next";
 import { Box, Button, Heading, Grommet } from "grommet";
 import { Notification } from "grommet-icons";
