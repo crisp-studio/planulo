@@ -1,7 +1,7 @@
 import Link from "next/link";
-import Header from "../components/header";
-
 import { Button } from "grommet";
+import { Header } from "../components/common";
+import EventFiller from "../components/schedule/event-filler";
 
 const Index = () => (
   <div>
@@ -10,6 +10,7 @@ const Index = () => (
     <Link href="/about">
       <Button label="About" />
     </Link>
+    <EventFiller />
   </div>
 );
 

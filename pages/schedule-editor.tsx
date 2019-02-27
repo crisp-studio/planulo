@@ -1,21 +1,18 @@
-import Layout from "../components/layout";
-import RangePicker from "../components/range-picker";
-import SEHeader from "../components/se-header";
-import { Box, Grid, Heading } from "grommet";
-import Container from "../components/container";
-import styled from "styled-components";
+import Schedule from "../components/schedule";
+import ScheduleEditorHeader from "../components/schedule-editor-header";
+import ScheduleHeader from "../components/schedule-header";
+import { Box } from "grommet";
+import { Container, Layout } from "../components/common";
 
 const ScheduleEditor = () => (
   <Layout>
     <Box direction="column" background="light-1">
-      <SEHeader />
-      <Container>
-        <Box
-          background="white"
-          basis="full"
-          height="large"
-          elevation="xsmall"
-        />
+      <Container background="brand">
+        <ScheduleEditorHeader />
+        <ScheduleHeader />
+      </Container>
+      <Container background="light-1">
+        <Schedule />
       </Container>
     </Box>
   </Layout>

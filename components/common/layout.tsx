@@ -1,4 +1,4 @@
-import planulo from "../theme";
+import planulo from "../../theme";
 import React from "react";
 import { Box, Grommet } from "grommet";
 import { createGlobalStyle } from "styled-components";
