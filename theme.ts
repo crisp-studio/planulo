@@ -103,9 +103,9 @@ const planulo = {
     border: {
       radius: `8px`
     },
-    color: { dark: "light-1", light: "brand-9" },
+    color: { dark: "brand-1", light: "brand-5" },
     primary: {
-      color: { dark: "brand-9", light: "light-1" }
+      color: { dark: "brand-1", light: "brand-5" }
     }
   }
 };
