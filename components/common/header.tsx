@@ -1,18 +1,25 @@
 import Link from "next/link";
-
-const linkStyle = {
-  marginRight: 15
-};
+import { Box, Button, Text } from "grommet";
+import { Logo, Container } from "../common";
 
 const Header = () => (
-  <div>
-    <Link href="/">
-      <a style={linkStyle}>Home</a>
-    </Link>
-    <Link href="/about">
-      <a style={linkStyle}>About</a>
-    </Link>
-  </div>
+  <Container>
+    <Box
+      direction="row-responsive"
+      justify="between"
+      pad={{ vertical: "medium" }}
+    >
+      <Logo />
+      <Box direction="row" gap="xsmall">
+        <Link href="/log-in">
+          <Button label="Log In" />
+        </Link>
+        <Link href="/sign-up">
+          <Button label={<Text color="brand-1">Sign up</Text>} primary />
+        </Link>
+      </Box>
+    </Box>
+  </Container>
 );
 
 export default Header;
