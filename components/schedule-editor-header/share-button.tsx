@@ -18,9 +18,14 @@ class ShareButton extends React.Component {
         <Box fill align="center" justify="center">
           <Button
             primary
+            color="brand-1"
             reverse
-            icon={<Share />}
-            label={<Text weight="bold">Share</Text>}
+            icon={<Share color="#0F609B" />}
+            label={
+              <Text weight="bold" color="brand-8">
+                Share
+              </Text>
+            }
             onClick={this.onOpen}
           />
         </Box>
