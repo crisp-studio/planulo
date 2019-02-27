@@ -9,6 +9,11 @@ import { Box } from "grommet";
 const localizer = BigCalendar.momentLocalizer(moment);
 const DnDCalendar = withDragAndDrop(BigCalendar);
 
+interface EventProps {
+  start: Date;
+  end: Date;
+}
+
 class Schedule extends React.Component {
   state = {
     events: [
@@ -20,7 +25,7 @@ class Schedule extends React.Component {
     ]
   };
 
-  eventStyleGetter = (event, start, end, isSelected) => {
+  eventStyleGetter = () => {
     var backgroundColor = "#FFF3C4";
     var style = {
       backgroundColor: backgroundColor,
@@ -35,20 +40,23 @@ class Schedule extends React.Component {
     };
   };
 
-  onEventResize = (type, { event, start, end, allDay }) => {
+  onEventResize = ({ start, end }: EventProps) => {
     this.setState(state => {
-      state.events[0].start = start;
-      state.events[0].end = end;
-      return { events: state.events };
+      console.log("TCL: Schedule -> onEventResize -> state", state);
+      this.state.events[0].start = start;
+      this.state.events[0].end = end;
+
+      return { events: this.state.events };
     });
   };
 
-  onSelectSlot = ({ start, end }) => {
+  onSelectSlot = ({ start, end }: EventProps) => {
     this.setState(state => {
-      state.events[0].start = start;
-      state.events[0].end = end;
+      console.log("TCL: onSelectSlot -> state", state);
+      this.state.events[0].start = start;
+      this.state.events[0].end = end;
 
-      return { events: state.events };
+      return { events: this.state.events };
     });
   };
 
@@ -69,10 +77,10 @@ class Schedule extends React.Component {
             popup={true}
             timeslots="1"
             selectable
+            resizable
             events={this.state.events}
-            onSelectSlot={this.onEventDrop}
+            onSelectSlot={this.onSelectSlot}
             onEventResize={this.onEventResize}
-            draggableAccessor={event => true}
             style={{ height: "100vh" }}
             eventPropGetter={this.eventStyleGetter}
           />

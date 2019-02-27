@@ -34,14 +34,7 @@ class RangePicker extends React.Component {
           open={open}
           onClose={() => this.setState({ open: false })}
           onOpen={() => this.setState({ open: true })}
-          dropContent={
-            <Calendar
-              startDate={startDate}
-              endDate={endDate}
-              onSelect={console.log}
-              range
-            />
-          }
+          dropContent={<Calendar onSelect={console.log} range />}
         >
           <Box>
             <Text>

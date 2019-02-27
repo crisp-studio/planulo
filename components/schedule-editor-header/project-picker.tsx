@@ -2,7 +2,7 @@ import React from "react";
 import { Box, DropButton, Heading, Button, Text } from "grommet";
 import { ChevronDown } from "react-feather";
 
-const DropContent = ({ onClose }) => (
+const DropContent = () => (
   <Box pad="small">
     <Text>Siemens Design Sprint</Text>
     <Text>Siemens Design Sprint</Text>
@@ -34,7 +34,7 @@ class ProjectPicker extends React.Component {
           dropAlign={{ top: "bottom", right: "right" }}
           open={open}
           onClose={() => this.setState({ open: undefined })}
-          dropContent={<DropContent onClose={this.onClose} />}
+          dropContent={<DropContent />}
         />
       </Box>
     );

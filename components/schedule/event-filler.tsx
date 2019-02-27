@@ -3,6 +3,8 @@ import { Box, TextInput, TextArea } from "grommet";
 import { Droplet } from "react-feather";
 import styled from "styled-components";
 
+// ? Was ist das Problem hier mit den Typee?
+
 class EventFiller extends React.Component {
   render() {
     return (

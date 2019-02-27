@@ -1,6 +1,4 @@
 import { rgba } from "polished";
-import { ThemeProps } from "styled-components";
-import { base } from "grommet/themes";
 
 const brandColor = "#4098D7";
 const accentColors = ["#FFFBEA", "#FCE588", "#F7C948", "#CB6E17"];
