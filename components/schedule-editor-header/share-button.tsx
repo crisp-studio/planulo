@@ -1,6 +1,7 @@
 import React from "react";
-import { Box, Button, Heading, Layer, Text } from "grommet";
+import { Box, Heading, Layer, Text } from "grommet";
 import { Share } from "react-feather";
+import { Button } from "../../components/common";
 
 class ShareButton extends React.Component {
   state = {

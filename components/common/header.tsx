@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { Box, Button, Text } from "grommet";
+import { Box, Text } from "grommet";
 import { Logo, Container } from "../common";
+import { Button } from "../../components/common";
 
 const Header = () => (
   <Container>
