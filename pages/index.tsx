@@ -1,17 +1,14 @@
-import Link from "next/link";
-import { Button } from "grommet";
+import { Box } from "grommet";
 import { Header } from "../components/common";
-import EventFiller from "../components/schedule/event-filler";
+import Intro from "../components/intro";
+import ProductPreview from "../components/product-preview";
 
 const Index = () => (
-  <div>
+  <Box>
     <Header />
-    <p>Hello Next.js</p>
-    <Link href="/about">
-      <Button label="About" />
-    </Link>
-    <EventFiller />
-  </div>
+    <Intro />
+    <ProductPreview />
+  </Box>
 );
 
 export default Index;
