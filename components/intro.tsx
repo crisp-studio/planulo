@@ -5,7 +5,7 @@ import { Button } from "../components/common";
 
 const Intro = () => (
   <Box justify="center" align="center" pad={{ top: "xlarge" }}>
-    <Heading textAlign="center" color="brand-8">
+    <Heading textAlign="center" color="brand-5">
       Create a workshop schedule and keep your guests on track
     </Heading>
     <Button
