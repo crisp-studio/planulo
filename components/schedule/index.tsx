@@ -1,39 +1,45 @@
 import BigCalendar from "react-big-calendar";
+import Event from "./event";
+import eventColors from "./event-colors";
 import moment from "moment";
 import React from "react";
-import "react-big-calendar/lib/css/react-big-calendar.css";
-import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 import styled from "styled-components";
+import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 import { Box } from "grommet";
+import "react-big-calendar/lib/css/react-big-calendar.css";
 
 const localizer = BigCalendar.momentLocalizer(moment);
 const DnDCalendar = withDragAndDrop(BigCalendar);
-
 interface EventProps {
   start: Date;
   end: Date;
+  color: string;
+  bg: string;
 }
+
+const components = {
+  event: Event
+};
+
+const minTime = new Date();
+minTime.setHours(8, 0, 0);
+const maxTime = new Date();
+maxTime.setHours(20, 0, 0);
 
 class Schedule extends React.Component {
   state = {
-    events: [
-      {
-        start: new Date(),
-        end: new Date(moment().add(1, "days")),
-        title: "Some title"
-      }
-    ]
+    minTime: minTime,
+    maxTime: maxTime,
+    events: []
   };
 
-  eventStyleGetter = () => {
-    var backgroundColor = "#FFF3C4";
+  eventStyleGetter = (event: EventProps) => {
     var style = {
-      backgroundColor: backgroundColor,
-      borderRadius: "0px",
+      color: event.color,
+      backgroundColor: event.bg,
+      borderRadius: "6px",
       opacity: 1,
-      color: "#334E68",
-      border: "0px",
-      display: "block"
+      border: "0px"
     };
     return {
       style: style
@@ -51,12 +57,20 @@ class Schedule extends React.Component {
   };
 
   onSelectSlot = ({ start, end }: EventProps) => {
-    this.setState(state => {
-      console.log("TCL: onSelectSlot -> state", state);
-      this.state.events[0].start = start;
-      this.state.events[0].end = end;
+    const title = "Untitled";
 
-      return { events: this.state.events };
+    this.setState({
+      events: [
+        ...this.state.events,
+        {
+          start,
+          end,
+          title,
+          color: eventColors.yellow.text,
+          bg: eventColors.yellow.bg,
+          location
+        }
+      ]
     });
   };
 
@@ -70,12 +84,11 @@ class Schedule extends React.Component {
       >
         <Box background="white">
           <DnDCalendar
-            // components={components}
+            components={components}
             localizer={localizer}
             defaultView="month"
             // toolbar={false}
-            popup={true}
-            timeslots="1"
+            timeslots={1}
             selectable
             resizable
             events={this.state.events}
@@ -83,6 +96,11 @@ class Schedule extends React.Component {
             onEventResize={this.onEventResize}
             style={{ height: "100vh" }}
             eventPropGetter={this.eventStyleGetter}
+            min={this.state.minTime}
+            max={this.state.maxTime}
+            step={60}
+            EventWrapper
+            formats={{ eventTimeRangeFormat: () => null }}
           />
         </Box>
       </Box>
@@ -538,7 +556,7 @@ const StyledCalendar = styled(Schedule)`
     flex: 1;
   }
   .rbc-timeslot-group {
-    border-bottom: 1px solid #d9e2ec;
+    border-bottom: none;
     min-height: 40px;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -630,7 +648,7 @@ const StyledCalendar = styled(Schedule)`
     flex-basis: 0px;
   }
   .rbc-time-view-resources .rbc-time-header-cell-single-day {
-    display: none;
+    display: block;
   }
   .rbc-time-view-resources .rbc-day-slot {
     min-width: 140px;
@@ -682,7 +700,7 @@ const StyledCalendar = styled(Schedule)`
     -ms-flex: 1;
     flex: 1;
     width: 100%;
-    border: 1px solid #d9e2ec;
+    border: none;
     min-height: 0;
   }
   .rbc-time-view .rbc-time-gutter {
@@ -730,7 +748,7 @@ const StyledCalendar = styled(Schedule)`
     border-bottom: 1px solid #d9e2ec;
   }
   .rbc-time-header-cell-single-day {
-    display: none;
+    display: block;
   }
   .rbc-time-header-content {
     -webkit-flex: 1;
@@ -795,9 +813,24 @@ const StyledCalendar = styled(Schedule)`
 
   // Custom Styles
 
-  span {
+  .rbc-time-slot span {
     color: #9fb3c8;
+    font-weight: bold;
+    font-size: 16px;
   }
+
+  .rbc-event {
+    padding: 0;
+  }
+
+  .rbc-addons-dnd-resizable {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* .rbc-time-header {
+    display: none;
+  } */
 `;
 
 export default StyledCalendar;
