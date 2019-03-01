@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, TextInput, TextArea } from "grommet";
-import { Droplet } from "react-feather";
+import ColorPicker from "./color-picker";
 import styled from "styled-components";
 
 // ? Was ist das Problem hier mit den Typee?
@@ -10,30 +10,38 @@ class EventFiller extends React.Component {
     return (
       <Box
         background="white"
-        elevation="xsmall"
-        pad="small"
+        elevation="medium"
+        pad="xsmall"
         height="200px"
         width="260px"
-        border={{ side: "left", color: "orange", size: "medium" }}
+        border={{ side: "left", color: "#FFF3BF", size: "medium" }}
         round="xsmall"
-        justify="around"
+        justify="between"
+        margin={{ bottom: "small", left: "small", right: "small" }}
+        animation="slideRight"
       >
-        <TitleInput id="title" placeholder="Add title" plain />
-        <DescriptionInput
-          id="description"
-          placeholder="Add a description"
-          plain
-        />
-        <Box direction="row-responsive">
+        <Box>
+          <TitleInput id="title" placeholder="Add title" plain />
+          <DescriptionInput
+            id="description"
+            placeholder="Add a description"
+            plain
+            fill
+          />
+        </Box>
+
+        <Box direction="row-responsive" align="center">
           <LocationInput id="location" placeholder="location" plain />
-          <Droplet />
+          <ColorPicker />
         </Box>
       </Box>
     );
   }
 }
 
-const TitleInput = styled(TextInput)``;
+const TitleInput = styled(TextInput)`
+  color: "brand-8";
+`;
 
 const DescriptionInput = styled(TextArea)`
   font-size: 0.875rem;
